@@ -1,62 +1,61 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Comment from "./Comment";
+import ListComment from "./ListComment";
+import Rate from "./Rate";
 
-function Detail(){
 
-    const params = useParams();
+            function Detail(){
 
-    const [data, setData] = useState({});
-    const [comment, setComment] = useState([]);
+            const params = useParams();
 
-    useEffect(()=>{
+            const [data, setData] = useState({});
+            const [comment, setComment] = useState([]);
+            
+                    useEffect(()=>{
 
-        axios.get("http://localhost/laravel8/laravel8/public/api/blog/detail/" + params.id)
+                    axios.get("http://localhost/laravel8/laravel8/public/api/blog/detail/" + params.id)
 
-        .then(res => {
+                    .then(res => {
 
-            console.log(res.data);
+                    setData(res.data.data);
+                    setComment(res.data.data.comment);
+                    
 
-            setData(res.data.data);
+                    })
 
-            setComment(res.data.data.comment);
+                        .catch(err => {
+                        console.log(err);
+                        })
 
-        })
+                        },[params.id]);
 
-        .catch(err => {
-            console.log(err);
-        })
+        return(
 
-    },[params.id]);
+                    <div className="blog-post-area">
 
-    return(
+                        <h2>{data.title}</h2>
 
-        <div className="blog-post-area">
+                            <img
+                            src={"http://localhost/laravel8/laravel8/public/upload/Blog/image/" + data.image}
+                            alt=""
+                            />
 
-            <h2>{data.title}</h2>
+                            <p>{data.description}</p>
 
-            <img
-            src={"http://localhost/laravel8/laravel8/public/upload/Blog/image/" + data.image}
-            alt=""
-            />
+                           <Rate idBlog={params.id} />
+                          
 
-            <p>{data.description}</p>
+                            <h3>Comments</h3>
 
-            <h3>Comments</h3>
+                                <Comment idBlog={params.id} setComment={setComment} comment={comment}/>
 
-            {comment && comment.map((item,key)=>{
-
-                return(
-                    <div key={key}>
-                        <p>{item.comment}</p>
-                    </div>
-                )
-
-            })}
+                                <ListComment comment={comment} />
 
         </div>
 
-    )
+        )
 
 }
 

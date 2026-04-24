@@ -23,6 +23,7 @@ function Register() {
     });
   };
 
+
   const handleUserInputFile = (e) => {
     const files = e.target.files;
     if (!files || !files[0]) return;
@@ -120,10 +121,10 @@ function Register() {
 
   return (
     <div className="signup-form">
-      <h2>New User Signup!</h2>
+      <h2 className="title text-center">New User Signup!</h2>
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <input name="name" placeholder="Name" onChange={handleChange} />
+        <input name="name" placeholder="Name" onChange={handleChange}  />
         {errors.name && <p>{errors.name}</p>}
 
         <input name="email" placeholder="Email" onChange={handleChange} />
