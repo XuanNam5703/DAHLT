@@ -12,6 +12,10 @@ import Index from './component/Blog/Index';
 import Login from './component/Member/Login';
 import Register from './component/Member/Register';
 import Member from './component/Member/Index';
+import Update from './component/Member/User/Update';
+import AddProduct from './component/Member/User/AddProduct';
+import MyProduct from './component/Member/User/MyProduct';
+import EditProduct from './component/Member/User/EditProduct';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -37,8 +41,13 @@ root.render(
 
           <Route path="member/index" element={<Member />} />
 
+          <Route path="member/user/update" element={<Update/>}/>
 
+          <Route path="member/user/addproduct" element={<AddProduct/>}/>
 
+          <Route path="member/user/myproduct" element={<MyProduct/>}/>
+
+          <Route path="member/user/editproduct/:id" element={<EditProduct/>}/>
         </Routes>
 
       </App>

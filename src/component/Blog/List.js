@@ -20,7 +20,8 @@ function List(){
     },[]);
 
     return(
-        <div className="blog-post-area">
+        <div  class="col-sm-9">
+             <div className="blog-post-area">
             <h2 className="title text-center">Latest From our Blog</h2>
 
             {blogs.map((item,key)=>(
@@ -59,6 +60,8 @@ function List(){
             ))}
 
         </div>
+        </div>
+       
     )
 }
 

@@ -54,13 +54,14 @@ function Login() {
   .then((res) => {
     console.log(res.data);
 
-   if (res.data.errors) {
-  setErrors(res.data.errors);
-} else {
-  alert("Đăng nhập thành công");
-  localStorage.setItem("login", JSON.stringify(res.data));
-  navigate('/');
-}
+      if (res.data.errors) {
+        setErrors(res.data.errors);
+      } else {
+        alert("Đăng nhập thành công");
+        localStorage.setItem("login", JSON.stringify(res.data));
+        console.log(res.data)
+        navigate('/');
+      }
   })
   .catch((err) => {
     console.log(err.response);
@@ -68,12 +69,10 @@ function Login() {
   });
 
   };
-  
-  
-
   return (
-    <div className="login-form">
-      <h2>Login to your account</h2>
+    <div class="col-sm-9">
+       <div className="login-form">
+      <h2 className="title text-center">Login to your account</h2>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -107,6 +106,8 @@ function Login() {
         </button>
       </form>
     </div>
+    </div>
+   
   );
 }
 

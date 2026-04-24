@@ -1,7 +1,7 @@
 function Head(){
   function renderLogin(){
 
-  let data = localStorage.getItem("login")
+  let data = localStorage.getItem("appState")
 
   if(data){
 
